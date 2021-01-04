@@ -24,11 +24,18 @@ class Quizzler extends StatelessWidget {
   }
 }
 
-class QuizPage extends StatelessWidget {
+class QuizPage extends StatefulWidget {
+  @override
+  _QuizPageState createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [];
+
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           flex: 6,
@@ -52,7 +59,16 @@ class QuizPage extends StatelessWidget {
             child: FlatButton(
               textColor: Colors.white,
               color: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ),
+                  );
+                });
+              },
               child: Text(
                 'True',
                 style: TextStyle(
@@ -69,7 +85,16 @@ class QuizPage extends StatelessWidget {
             child: FlatButton(
               textColor: Colors.white,
               color: Colors.red,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
+              },
               child: Text(
                 'False',
                 style: TextStyle(
@@ -80,6 +105,9 @@ class QuizPage extends StatelessWidget {
             ),
           ),
         ),
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
