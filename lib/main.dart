@@ -122,7 +122,7 @@ class _QuizPageState extends State<QuizPage> {
                   });
                 } else {
                   setState(() {
-                     scoreKeeper.add(
+                    scoreKeeper.add(
                       Icon(
                         Icons.close,
                         color: Colors.red,
