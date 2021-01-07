@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/QuizBrain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 void main() {
@@ -37,6 +38,11 @@ class _QuizPageState extends State<QuizPage> {
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBrain.getCorrectAnswer();
     if (quizBrain.isFinished()) {
+      Alert(
+              context: context,
+              title: "Quiz Score",
+              desc: "You've completed the quiz.")
+          .show();
       quizBrain.reset();
       scoreKeeper.clear();
     } else {
